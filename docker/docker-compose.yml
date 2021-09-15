@@ -1,0 +1,18 @@
+version: '3'
+volumes:
+  my-db:
+services:
+  # MySQL
+  mysql:
+    ports:
+      - "3306:3306"
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpassword
+      MYSQL_ROOT_PASSWORD: testpassword
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: opentelemetry-tests
+    volumes:
+      - my-db:/var/lib/mysql
